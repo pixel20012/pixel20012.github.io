@@ -6,30 +6,15 @@
     <title>Pixel20012 Yearbook</title>
     <link rel="stylesheet" href="style.css?v=13">
     <link rel="icon" href="images/THETHING_SINGLE_64sq.png">
+    <script src="layout.js?v=3" defer></script>
   </head>
-  <body>
-    <div class="site-background" aria-hidden="true">
-      <div class="background-grid"></div>
-      <div class="background-noise"></div>
-    </div>
+  <body data-page="yearbook" data-rail-context="VISUAL ARCHIVE" data-rail-detail="YEARBOOK NODE">
+    <div data-include="layout/background.html"></div>
 
-    <header class="site-header">
-      <a class="mark" href="index.html">P20012://ARCHIVE</a>
-      <nav aria-label="Main navigation">
-        <a href="index.html#about">About</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="guestbook.html">Guestbook</a>
-        <a class="active" href="yearbook.html" aria-current="page">Yearbook</a>
-        <a href="archive.html">Archive</a>
-      </nav>
-    </header>
+    <div data-include="layout/site-header.html"></div>
 
     <main>
-      <aside class="archive-rail" aria-label="Archive status">
-        <span>PX-20012</span>
-        <span>VISUAL ARCHIVE</span>
-        <span>YEARBOOK NODE</span>
-      </aside>
+      <div data-include="layout/archive-rail.html"></div>
 
       <section class="page-hero">
         <p class="section-label">Visual Memory Archive / Yearbook</p>
@@ -70,13 +55,6 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>PX-20012 / Pixel20012</p>
-      <nav aria-label="Footer navigation">
-        <a href="mailto:pixel20012@gmail.com">Email</a>
-        <a href="https://ko-fi.com/pixel20012">Ko-fi</a>
-        <a href="https://twitter.com/pixel20012">Twitter</a>
-      </nav>
-    </footer>
+    <div data-include="layout/footer.html"></div>
   </body>
 </html>

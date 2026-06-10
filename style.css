@@ -6,11 +6,44 @@
   font-display: swap;
 }
 
+
+@font-face {
+  font-family: 'Atkinson';
+  src: url('fonts/Atkinson/Atkinson-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Italic';
+  src: url('fonts/Atkinson/Atkinson-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Bold';
+  src: url('fonts/Atkinson/Atkinson-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Bold Italic';
+  src: url('fonts/Atkinson/Atkinson-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --bg: #0c0d0c;
   --panel: #141514;
   --panel-2: #1a1b1a;
-  --text: #f4f4f4;
+  --text: #f0ead6;
   --muted: #8b8d88;
   --line: #424540;
   --red: #c81018;
@@ -18,7 +51,10 @@
   --green: #8cff9b;
   --amber: #d8b45f;
   --paper: #d7d4c8;
-  --display-font: 'ConcreteRegular', Impact, Haettenschweiler, 'Arial Black', sans-serif;
+  --eggshell: #f0ead6;
+  --link-color: #8cff9b;
+  --link-hover: #c7face;
+  --display-font: 'ConcreteRegular', Impact, Haettenschweiler, AtkinsonHyperlegible, 'Arial Black', sans-serif;
 }
 
 * {
@@ -113,7 +149,7 @@ nav {
 }
 
 nav a {
-  color: #d9d9d9;
+  color: var(--link-color);
   font-size: 0.76rem;
   border: 1px solid transparent;
   padding: 6px 0;
@@ -174,17 +210,28 @@ nav a[aria-current="page"] {
 }
 
 .terminal-line::before {
-  content: "> ";
+  color: var(--link-color);
   color: var(--red-hot);
 }
 
-.signal,
+.signal, /*Big text in the hero section*/
+
+/* Global hyperlink colors */
+a, a:visited {
+  color: var(--link-color);
+}
+
+a:hover, a:focus, a:active {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
 .section-label {
   margin: 0 0 18px;
   color: #f2f2f2;
   text-transform: uppercase;
   font-weight: 900;
   letter-spacing: 0.11em;
+  font-size: min(20px, 2vw);
 }
 
 .signal {
@@ -192,8 +239,8 @@ nav a[aria-current="page"] {
   font-size: clamp(2.2rem, 5.4vw, 5.4rem);
   line-height: 0.95;
   font-weight: bold;
-  color: var(--paper);
-  -webkit-text-stroke: 2px #f7f7f7;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--eggshell);
   text-shadow: 4px 4px 0 #050505;
 }
 
@@ -301,6 +348,21 @@ nav a[aria-current="page"] {
   align-items: start;
 }
 
+.license-badge-column {
+  display: flex;
+  align-items: start;
+  justify-content: flex-end;
+}
+
+.license-badge {
+  max-width: 155px;
+  height: auto;
+}
+
+.license-section {
+  font-family: 'Atkinson', sans-serif;
+}
+
 .section h2 {
   margin: 0;
   max-width: 700px;
@@ -309,7 +371,8 @@ nav a[aria-current="page"] {
   line-height: 0.96;
   font-weight: bold;
   text-transform: uppercase;
-  color: var(--paper);
+  color: transparent;
+  color: var(--eggshell); 
 }
 
 .section p:not(.section-label),
@@ -378,7 +441,7 @@ nav a[aria-current="page"] {
 
 .card h3 {
   margin: 0 0 18px;
-  color: #fff;
+  color: egglshell; ;
   font-size: 1.45rem;
   text-transform: uppercase;
   font-family: var(--display-font);
@@ -388,7 +451,7 @@ nav a[aria-current="page"] {
 .link-card a {
   display: inline-flex;
   margin: 20px 14px 0 0;
-  color: #fff;
+  color: var(--eggshell); ;
   text-transform: uppercase;
   font-size: 0.82rem;
   font-weight: 900;
@@ -414,13 +477,13 @@ nav a[aria-current="page"] {
 
 .webring-copy h3 {
   margin: 0;
-  color: var(--paper);
+  color: transparent;
   font-family: var(--display-font);
   font-size: clamp(1.45rem, 3.4vw, 3rem);
   line-height: 0.88;
   font-weight: bold;
   text-transform: uppercase;
-  -webkit-text-stroke: 2px #fff;
+  -webkit-text-stroke: 2px var(--eggshell) ;
   text-shadow: 4px 4px 0 #080808;
 }
 
@@ -444,7 +507,7 @@ nav a[aria-current="page"] {
   width: 220px;
   padding: 12px 10px 14px;
   border: 2px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
+  color: var(--eggshell) ;
   background:
     linear-gradient(180deg, rgba(140, 255, 155, 0.04), transparent),
     #10110f;
@@ -484,7 +547,7 @@ nav a[aria-current="page"] {
 }
 
 .webring-item.is-selected span {
-  color: #fff;
+  color: var(--eggshell) ;
 }
 
 .webring-controls {
@@ -497,8 +560,8 @@ nav a[aria-current="page"] {
 .webring-controls button {
   min-height: 46px;
   padding: 0 18px;
-  border: 2px solid #f6f6f6;
-  color: #f6f6f6;
+  border: 2px solid var(--eggshell);
+  color: var(--eggshell);
   background: #0d0e0d;
   text-transform: uppercase;
   font-weight: 900;
@@ -588,11 +651,11 @@ nav a[aria-current="page"] {
 }
 
 .slideshow-placeholder strong {
-  color: var(--paper);
+  color: transparent;
   font-size: clamp(2rem, 6vw, 5.5rem);
   line-height: 0.92;
   text-transform: uppercase;
-  -webkit-text-stroke: 2px #fff;
+  -webkit-text-stroke: 2px var(--eggshell) ;
 }
 
 .slideshow-placeholder p {
@@ -616,13 +679,13 @@ nav a[aria-current="page"] {
 
 .page-hero h1 {
   margin: 0 0 22px;
-  color: var(--paper);
+  color: transparent;
   font-family: var(--display-font);
   font-size: clamp(4rem, 12vw, 10rem);
   line-height: 0.86;
   font-weight: bold;
   text-transform: uppercase;
-  -webkit-text-stroke: 2px #fff;
+  -webkit-text-stroke: 2px var(--eggshell) ;
   text-shadow: 5px 5px 0 #090909;
 }
 
@@ -630,6 +693,20 @@ nav a[aria-current="page"] {
   max-width: 760px;
   text-transform: uppercase;
   font-weight: 900;
+}
+
+.hero-header-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.opl-hero-badge {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .guestbook-form {
@@ -642,7 +719,7 @@ nav a[aria-current="page"] {
 .guestbook-form label {
   display: grid;
   gap: 10px;
-  color: #fff;
+  color: var(--eggshell) ;
   text-transform: uppercase;
   font-size: 0.86rem;
   font-weight: 900;
@@ -684,7 +761,7 @@ nav a[aria-current="page"] {
 .entry strong {
   display: block;
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--eggshell) ;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -757,7 +834,7 @@ nav a[aria-current="page"] {
   margin: 0;
   padding: 12px;
   border: 2px solid var(--red-hot);
-  color: #fff;
+  color: var(--eggshell) ;
   background: #24090a;
   font-weight: 900;
   text-transform: uppercase;

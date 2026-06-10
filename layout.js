@@ -1,25 +1,36 @@
 async function includeLayouts() {
   const includeTargets = Array.from(document.querySelectorAll("[data-include]"));
+  const baseUrl = document.baseURI;
+  const isFileProtocol = window.location.protocol === "file:";
 
-  await Promise.all(includeTargets.map(async (target) => {
-    const source = target.dataset.include;
+  for (const target of includeTargets) {
+    const source = String(target.dataset.include || "").trim();
+    if (!source) {
+      continue;
+    }
+
+    const requestUrl = new URL(source, baseUrl).href;
 
     try {
-      const response = await fetch(source);
+      const response = await fetch(requestUrl, { cache: "reload" });
 
       if (!response.ok) {
-        throw new Error(`Could not load ${source}`);
+        throw new Error(`Could not load ${source} (${response.status})`);
       }
 
-      target.innerHTML = await response.text();
+      const html = await response.text();
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = html;
+      target.replaceWith(...Array.from(wrapper.childNodes));
     } catch (error) {
-      const localFileHint = window.location.protocol === "file:"
-        ? " Open the site through a local server instead of directly from disk."
-        : "";
-
-      target.innerHTML = `<p class="layout-error">Layout could not load: ${source}.${localFileHint}</p>`;
+      console.error("Layout include failed:", source, error);
+      target.innerHTML = "";
+      const errorNode = document.createElement("p");
+      errorNode.className = "layout-error";
+      errorNode.textContent = `Layout could not load: ${source}${isFileProtocol ? " (run via a local HTTP server)" : ""}`;
+      target.appendChild(errorNode);
     }
-  }));
+  }
 
   setActiveNavigation();
   setArchiveRail();
@@ -39,15 +50,19 @@ function setActiveNavigation() {
 }
 
 function setArchiveRail() {
-  const context = document.querySelector("[data-rail-context]");
-  const detail = document.querySelector("[data-rail-detail]");
+  const contexts = document.body.querySelectorAll("[data-rail-context]");
+  const details = document.body.querySelectorAll("[data-rail-detail]");
 
-  if (context && document.body.dataset.railContext) {
-    context.textContent = document.body.dataset.railContext;
+  if (document.body.dataset.railContext) {
+    contexts.forEach((context) => {
+      context.textContent = document.body.dataset.railContext;
+    });
   }
 
-  if (detail && document.body.dataset.railDetail) {
-    detail.textContent = document.body.dataset.railDetail;
+  if (document.body.dataset.railDetail) {
+    details.forEach((detail) => {
+      detail.textContent = document.body.dataset.railDetail;
+    });
   }
 }
 
