@@ -1,0 +1,16 @@
+content:
+  - name: opl-docs
+    label: "OPL Documentation"
+    type: collection
+    path: documentation/OPL-docs
+    filename: "v{fields.version}.md"
+    fields:
+      - name: version
+        label: "Version"
+        type: string
+      - name: title
+        label: "Title"
+        type: string
+      - name: body
+        label: "Content"
+        type: rich-text
