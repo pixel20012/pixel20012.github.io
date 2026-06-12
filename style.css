@@ -68,7 +68,7 @@ html {
 body {
   margin: 0;
   color: var(--text);
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   background:
     radial-gradient(circle at 76% 12%, rgba(255, 29, 37, 0.12), transparent 24rem),
     linear-gradient(135deg, #10110f 0%, #090a09 48%, #151613 100%);
@@ -134,12 +134,6 @@ nav a {
   letter-spacing: 0.08em;
 }
 
-.mark {
-  color: var(--red-hot);
-  border: 1px solid rgba(255, 29, 37, 0.5);
-  padding: 8px 10px;
-  box-shadow: 4px 4px 0 #000;
-}
 
 nav {
   display: flex;
@@ -232,6 +226,7 @@ a:hover, a:focus, a:active {
   font-weight: 900;
   letter-spacing: 0.11em;
   font-size: min(20px, 2vw);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .signal {
@@ -242,6 +237,13 @@ a:hover, a:focus, a:active {
   color: transparent;
   -webkit-text-stroke: 2px var(--eggshell);
   text-shadow: 4px 4px 0 #050505;
+}
+
+.mark {
+  color: var(--red-hot);
+  border: 1px solid rgba(255, 29, 37, 0.5);
+  padding: 8px 10px;
+  box-shadow: 4px 4px 0 #000;
 }
 
 .bio {
@@ -360,6 +362,17 @@ a:hover, a:focus, a:active {
 }
 
 .license-section {
+  font-family: 'Atkinson-Regular', Monospace;
+}
+
+.license-label {
+  display: inline-flex;
+  margin-top: 18px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
   font-family: 'Atkinson-Regular', sans-serif;
 }
 
