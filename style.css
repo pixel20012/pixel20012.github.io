@@ -8,32 +8,32 @@
 
 
 @font-face {
-  font-family: 'Atkinson';
-  src: url('fonts/Atkinson/Atkinson-Regular.ttf') format('truetype');
+  font-family: 'Atkinson-Regular';
+  src: url('fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Atkinson Italic';
-  src: url('fonts/Atkinson/Atkinson-Italic.ttf') format('truetype');
+  font-family: 'Atkinson-Italic';
+  src: url('fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Atkinson Bold';
-  src: url('fonts/Atkinson/Atkinson-Bold.ttf') format('truetype');
+  font-family: 'Atkinson-Bold';
+  src: url('fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Atkinson Bold Italic';
-  src: url('fonts/Atkinson/Atkinson-BoldItalic.ttf') format('truetype');
+  font-family: 'Atkinson-BoldItalic';
+  src: url('fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-BoldItalic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -54,7 +54,7 @@
   --eggshell: #f0ead6;
   --link-color: #8cff9b;
   --link-hover: #c7face;
-  --display-font: 'ConcreteRegular', Impact, Haettenschweiler, AtkinsonHyperlegible, 'Arial Black', sans-serif;
+  --display-font: 'ConcreteRegular', 'Atkinson-Regular', Impact, Haettenschweiler, 'Arial Black', sans-serif;
 }
 
 * {
@@ -360,7 +360,7 @@ a:hover, a:focus, a:active {
 }
 
 .license-section {
-  font-family: 'Atkinson', sans-serif;
+  font-family: 'Atkinson-Regular', sans-serif;
 }
 
 .section h2 {
@@ -441,7 +441,7 @@ a:hover, a:focus, a:active {
 
 .card h3 {
   margin: 0 0 18px;
-  color: egglshell; ;
+  color: var(--egglshell);
   font-size: 1.45rem;
   text-transform: uppercase;
   font-family: var(--display-font);
