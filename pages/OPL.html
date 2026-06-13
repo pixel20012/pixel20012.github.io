@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OPLV1.1</title>
+        <link href="../style.css?v=13" rel="stylesheet" type="text/css" media="all">
+        <link rel="icon" href="../media/OPL-media/OPL_v1.1_Periwinkle.png">
+        <!-- layout renderer-->
+        <script src="../layout.js?v=3" defer></script>
+        <!-- markdown renderer -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js" defer></script>
+        <!-- yaml parser -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js" defer></script>
+    </head>
+
+    <body data-page="licensure" data-rail-context="PUBLIC NODE" data-rail-detail="REV 06.12.26">
+        <div data-include="../layout/background.html"></div>
+
+        <div data-include="../layout/site-header.html"></div>
+
+        <main>
+            <div data-include="../layout/archive-rail.html"></div>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="terminal-line">Licensure / Legal Information</p>
+                    <p class="signal" id="opl-title">Loading...</p>
+                    <p id="opl-summary"></p>
+                </div>
+
+                <div class="hero-logo-slot">
+                    <img id="opl-logo" src="" alt="OPL logo">
+                    <span>Vector seal loaded</span>
+                </div>
+            </section>
+
+            <section class="section license-section">
+                <div id="opl-content">
+                    <p>Loading...</p>
+                </div>
+            </section>
+        </main>
+        <div data-include="../layout/footer.html"></div>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const version = params.get('license') || '1.1'; // default latest
+
+            fetch(`../documentation/OPL-docs/v${version}.md`)
+                .then(res => {
+                    if (!res.ok) throw new Error('Version not found');
+                    return res.text();
+                })
+                .then(raw => {
+                    // Split frontmatter (---...---) from body
+                    const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+                    if (!match) throw new Error('No frontmatter found');
+
+                    const frontmatter = jsyaml.load(match[1]);
+                    const body = match[2];
+
+                    // Apply dynamic fields
+                    document.getElementById('opl-title').textContent = frontmatter.title;
+                    document.getElementById('opl-logo').src = frontmatter.logo;
+                    if (frontmatter.summary) {
+                        document.getElementById('opl-summary').textContent = frontmatter.summary;
+                    }
+                    document.title = frontmatter.title;
+
+                    // Render markdown body
+                    document.getElementById('opl-content').innerHTML = marked.parse(body);
+                })
+                .catch(err => {
+                    document.getElementById('opl-content').innerHTML =
+                        `<p>Couldn't load OPL v${version}. <a href="../OPL">View old OPL directory</a>.</p>`;
+                });
+        </script>
+    </body>
+</html>

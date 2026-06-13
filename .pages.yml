@@ -4,6 +4,7 @@ content:
     type: collection
     path: documentation/OPL-docs
     filename: "v{fields.version}.md"
+    format: yaml-frontmatter
     fields:
       - name: version
         label: "Version"
@@ -11,6 +12,12 @@ content:
       - name: title
         label: "Title"
         type: string
+      - name: logo
+        label: "Logo"
+        type: image
+      - name: summary
+        label: "Summary"
+        type: text
       - name: body
         label: "Content"
         type: rich-text
