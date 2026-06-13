@@ -14,7 +14,7 @@ content:
         type: string
       - name: logo
         label: "Logo"
-        type: image
+        type: media
       - name: summary
         label: "Summary"
         type: text
