@@ -1,8 +1,8 @@
 content:
-  - name: opl-docs
-    label: "OPL Documentation"
+  - name: opl-standard
+    label: "OPL Standard Track"
     type: collection
-    path: documentation/OPL-docs
+    path: content/opl
     filename: "v{fields.version}.md"
     format: yaml-frontmatter
     fields:
@@ -15,9 +15,53 @@ content:
       - name: logo
         label: "Logo"
         type: media
-      - name: summary
-        label: "Summary"
-        type: text
+      - name: favicon
+        label: "Favicon"
+        type: media
+      - name: track
+        label: "Track"
+        type: string
+        default: "standard"
+      - name: has_nai
+        label: "Has NAI Variant?"
+        type: boolean
+      - name: changelog
+        label: "Changelog"
+        type: list
+      - name: body
+        label: "Content"
+        type: rich-text
+
+  - name: opl-nai
+    label: "OPL No-AI Track"
+    type: collection
+    path: content/opl
+    filename: "v{fields.version}-nai.md"
+    format: yaml-frontmatter
+    fields:
+      - name: version
+        label: "Version"
+        type: string
+      - name: title
+        label: "Title"
+        type: string
+      - name: logo
+        label: "Logo"
+        type: media
+      - name: favicon
+        label: "Favicon"
+        type: media
+      - name: track
+        label: "Track"
+        type: string
+        default: "nai"
+      - name: has_nai
+        label: "Has NAI Variant?"
+        type: boolean
+        default: true
+      - name: changelog
+        label: "Changelog"
+        type: list
       - name: body
         label: "Content"
         type: rich-text

@@ -1,0 +1,14 @@
+baseURL = 'https://pixel20012.github.io/'
+locale = 'en-us'
+title = 'Pixel20012'
+enableRobotsTXT=true 
+
+# Skip the unused 
+# published site to the pages authorship
+disableKinds = ["taxonomy", "terms", "RSS"]
+
+# CI passes --baseURL from the Pages config step to value above is only a fall back for local builds 
+[params]
+    description= "Pixel20012 Personal Website" 
+[markup.goldmark.renderer]
+    unsafe = true

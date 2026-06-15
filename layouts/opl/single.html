@@ -1,0 +1,68 @@
+{{ define "main" }}
+<section class="hero" id="top">
+    <div class="hero-copy">
+        {{ partial "back-button.html" (dict "url" "/opl/" "label" "Back to All Versions") }}
+        <p class="terminal-line">Licensure / Legal Information</p>
+        {{ if eq .Params.track "nai" }}
+        <p class="section-label" style="margin-bottom: 16px; border-color: var(--mulberry); color: var(--mulberry);">
+            ⚠ No-AI Variant
+        </p>
+        {{ end }}
+        <p class="signal">{{ .Params.title }}</p>
+        <p>{{ .Params.summary }}</p>
+
+        {{ $standardSlug := replace .File.BaseFileName "-nai" "" }}
+        {{ if eq .Params.track "nai" }}
+            <a href="/opl/{{ $standardSlug }}/" class="button primary" style="margin-top: 24px;">
+                View Standard Version
+            </a>
+        {{ else if .Params.has_nai }}
+            <a href="/opl/{{ .File.BaseFileName }}-nai/" class="button primary" style="margin-top: 24px;">
+                View No-AI Variant
+            </a>
+        {{ else }}
+            <span class="button primary" style="margin-top: 24px; opacity: 0.4; cursor: not-allowed;" title="No NAI variant exists for this version.">
+                No-AI Variant Unavailable
+            </span>
+        {{ end }}
+
+        <!-- Download buttons -->
+        <div style="display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap;">
+            <button
+                class="button primary"
+                onclick="downloadOPLMarkdown('{{ .Params.version }}', {{ if eq .Params.track `nai` }}true{{ else }}false{{ end }})">
+                ↓ Download PDF (.pdf)
+            </button>
+            <button
+                class="button primary"
+                onclick="downloadOPLBundle('{{ .Params.version }}', {{ if eq .Params.track `nai` }}true{{ else }}false{{ end }})">
+                ↓ Download + TUA (.md)
+            </button>
+        </div>
+    </div>
+
+    <div class="hero-logo-slot">
+        <img src="{{ .Params.logo }}" alt="OPL logo">
+        <span>Vector seal loaded</span>
+    </div>
+</section>
+
+{{ if .Params.changelog }}
+<section class="section">
+    <p class="section-label">What Changed</p>
+    <div class="thought-box">
+        <ul>
+            {{ range .Params.changelog }}
+            <li>{{ . }}</li>
+            {{ end }}
+        </ul>
+    </div>
+</section>
+{{ end }}
+
+<section class="section license-section">
+    <div class="license-section-inner">
+    {{ .Content }}
+    </div>
+</section>
+{{ end }}

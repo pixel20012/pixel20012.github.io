@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="{{ if .Params.favicon }}{{ .Params.favicon }}{{ else }}/media/pixel20012/brand-media/thething_singular-64sq.png{{ end }}">
+    <script src="/webring.js" defer></script>
+    <!-- jsPDF for assembled build downloads -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/js/download.js" defer></script>
+</head>
+<body data-page="{{ .Params.data_page | default "home" }}">
+    {{ partial "background.html" . }}
+    {{ partial "site-header.html" . }}
+
+    <main id="top">
+        {{ partial "archive-rail.html" . }}
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/archive/</loc>
+  </url><url>
+    <loc>http://localhost:1313/guestbook/</loc>
+  </url><url>
+    <loc>http://localhost:1313/licensure/</loc>
+  </url><url>
+    <loc>http://localhost:1313/opl/v1.0/</loc>
+  </url><url>
+    <loc>http://localhost:1313/opl/v1.1/</loc>
+  </url><url>
+    <loc>http://localhost:1313/opl/v1.2/</loc>
+  </url><url>
+    <loc>http://localhost:1313/opl/v1.2-nai/</loc>
+  </url><url>
+    <loc>http://localhost:1313/opl/</loc>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tua/</loc>
+  </url><url>
+    <loc>http://localhost:1313/yearbook/</loc>
+  </url>
+</urlset>
