@@ -1,0 +1,77 @@
+{{ define "main" }}
+<section class="page-hero" id="top">
+    <p class="section-label">Licensure / Legal Information</p>
+    <h1>Open Pixel License</h1>
+
+    {{ $latest := index (sort (where .Pages "Params.track" "standard") "Params.version" "desc") 0 }}
+    <a href="{{ $latest.Permalink }}" class="button primary">
+        View Latest — v{{ $latest.Params.version }}
+    </a>
+    <a href="/tua/" class="button primary">
+        View the Transformative Use Addendum (TUA)
+    </a>
+</section>
+
+<section class="section">
+    <p class="section-label">Standard Track</p>
+    <p>
+        The Open Pixel License (OPL) is an open commercial media license created by Pixel20012 that allows use,
+        modification, redistribution, commercial products, and derivative works while preventing the standalone resale of unmodified digital assets.
+    </p>
+    <div class="cards" style="margin-top: 24px;">
+        {{ range sort (where .Pages "Params.track" "standard") "Params.version" "desc" }}
+        <article class="card link-card" style="border-left: 6px solid var(--periwinkle);">
+            <div class="hero-logo-slot" style="min-height: unset; margin-bottom: 16px;">
+                <a href="{{ .Permalink }}">
+                    <img src="{{ .Params.logo }}" alt="{{ .Params.title }} logo" style="width: 80px;">
+                </a>
+            </div>
+            <h3>{{ .Params.title }}</h3>
+            {{ if .Params.changelog }}
+            <ul>
+                {{ range first 3 .Params.changelog }}
+                <li>{{ . }}</li>
+                {{ end }}
+                {{ if gt (len .Params.changelog) 3 }}
+                <li style="color: var(--muted);">+ {{ sub (len .Params.changelog) 3 }} more...</li>
+                {{ end }}
+            </ul>
+            {{ end }}
+            <a href="{{ .Permalink }}">View License</a>
+        </article>
+        {{ end }}
+    </div>
+</section>
+
+<section class="section">
+    <p class="section-label">No-AI Variant</p>
+    <p>The OPL No-AI Variant explicitly prohibits the use of licensed assets in any AI training, generation, or machine learning pipeline.</p>
+    <div class="cards" style="margin-top: 24px;">
+        {{ range sort (where .Pages "Params.track" "nai") "Params.version" "desc" }}
+        <article class="card link-card" style="border-left: 6px solid var(--mulberry);">
+            <div class="hero-logo-slot" style="min-height: unset; margin-bottom: 16px;">
+                <a href="{{ .Permalink }}">
+                    <img src="{{ .Params.logo }}" alt="{{ .Params.title }} logo" style="width: 80px;">
+                </a>
+            </div>
+            <h3>{{ .Params.title }}</h3>
+            {{ if .Params.changelog }}
+            <ul>
+                {{ range first 3 .Params.changelog }}
+                <li>{{ . }}</li>
+                {{ end }}
+                {{ if gt (len .Params.changelog) 3 }}
+                <li style="color: var(--muted);">+ {{ sub (len .Params.changelog) 3 }} more...</li>
+                {{ end }}
+            </ul>
+            {{ end }}
+            <a href="{{ .Permalink }}">View License</a>
+        </article>
+        {{ end }}
+    </div>
+
+    <div style="text-align: right; margin-top: 32px;">
+        <a href="#top" class="button primary">↑ Back to Top</a>
+    </div>
+</section>
+{{ end }}
