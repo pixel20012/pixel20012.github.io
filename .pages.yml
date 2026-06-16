@@ -27,7 +27,7 @@ content:
         type: boolean
       - name: changelog
         label: "Changelog"
-        type: list
+        type: array
       - name: body
         label: "Content"
         type: rich-text
@@ -61,7 +61,7 @@ content:
         default: true
       - name: changelog
         label: "Changelog"
-        type: list
+        type: array
       - name: body
         label: "Content"
         type: rich-text

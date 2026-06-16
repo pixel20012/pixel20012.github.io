@@ -74,11 +74,11 @@ function generatePDF(content, filename, version, isNAI) {
     let y = margin;
 
     // Title
-    doc.setFont('Courier', 'bold');
+    doc.setFont('arial', 'bold');
     doc.setFontSize(14);
 
     const title = isNAI
-        ? `Open Pixel License v${version} — No-AI Variant`
+        ? `Open Pixel License v${version} - No-AI Variant`
         : `Open Pixel License v${version}`;
 
     doc.text(title, margin, y);
@@ -86,12 +86,12 @@ function generatePDF(content, filename, version, isNAI) {
 
     if (isNAI) {
         doc.setFontSize(10);
-        doc.text('[ NO-AI VARIANT — AI USE PROHIBITED ]', margin, y);
+        doc.text('[ NO-AI VARIANT - AI USE PROHIBITED ]', margin, y);
         y += lineHeight * 2;
     }
 
     // Body
-    doc.setFont('Courier', 'normal');
+    doc.setFont('arial', 'normal');
     doc.setFontSize(9.5);
 
     const plain = markdownToPlain(content);
@@ -107,13 +107,13 @@ function generatePDF(content, filename, version, isNAI) {
             }
 
             if (line.startsWith('# ')) {
-                doc.setFont('Courier', 'bold');
+                doc.setFont('arial', 'bold');
                 doc.setFontSize(11);
             } else if (line.startsWith('## ')) {
-                doc.setFont('Courier', 'bold');
+                doc.setFont('arial', 'bold');
                 doc.setFontSize(10);
             } else {
-                doc.setFont('Courier', 'normal');
+                doc.setFont('arial', 'normal');
                 doc.setFontSize(9.5);
             }
 
@@ -131,12 +131,12 @@ function generatePDF(content, filename, version, isNAI) {
 
     for (let i = 1; i <= pageCount; i++) {
         doc.setPage(i);
-        doc.setFont('Courier', 'normal');
+        doc.setFont('arial', 'normal');
         doc.setFontSize(8);
         doc.setTextColor(120);
 
         doc.text(
-            `Open Pixel License v${version} — pixel20012.github.io/opl/ — Page ${i} of ${pageCount}`,
+            `Open Pixel License v${version} - pixel20012.github.io/opl/ - Page ${i} of ${pageCount}`,
             margin,
             pageHeight - 36
         );
