@@ -11,7 +11,7 @@ async function fetchText(path) {
 // Component download — raw .md file
 async function downloadOPLMarkdown(version, isNAI = false) {
     const filename = isNAI
-        ? `OPL-v${version}-NAI.md`
+        ? `OPL-v${version}-nai.md`
         : `OPL-v${version}.md`;
 
     const text = await fetchText(`/downloads/opl/${filename}`);
