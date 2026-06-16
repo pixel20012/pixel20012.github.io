@@ -14,11 +14,11 @@ async function fetchText(path) {
 // =========================
 async function downloadOPLMarkdown(version, isNAI = false) {
     const mdFilename = isNAI
-        ? `v${version}-NAI.md`
+        ? `v${version}-nai.md`
         : `v${version}.md`;
 
     const pdfFilename = isNAI
-        ? `v${version}-NAI.pdf`
+        ? `v${version}-nai.pdf`
         : `v${version}.pdf`;
 
     const text = await fetchText(`/downloads/opl/${mdFilename}`);
@@ -31,12 +31,12 @@ async function downloadOPLMarkdown(version, isNAI = false) {
 // =========================
 async function downloadOPLBundle(version, isNAI = false) {
     const oplFilename = isNAI
-        ? `v${version}-NAI.md`
+        ? `v${version}-nai.md`
         : `v${version}.md`;
 
     const mdFilename = isNAI
-        ? `v${version}-NAI+TUA.md`
-        : `v${version}+TUA.md`;
+        ? `v${version}-nai+tua.md`
+        : `v${version}+tua.md`;
 
     const [oplText, tuaText] = await Promise.all([
         fetchText(`/downloads/opl/${oplFilename}`),
